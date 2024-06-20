@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doritos Footer</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="slider">
+    <div class="slides">
+        <div class="slide active" style="background-image: url('./pure\ ghee.jpg');"></div>
+        <div class="slide" style="background-image: url('./chips.jpeg')"></div>
+        <div class="slide" style="background-image: url('./thin\ chips.jpeg');"></div>
+        <div class="slide" style="background-image: url('./google\ play.png');"></div>
+        <div class="slide" style="background-image: url('./pure ghee.jpg');"></div>
+        <div class="slide" style="background-image: url('./groundnut oil.jpg');"></div>
+    </div>
+    <div class="navigation">
+        <div class="nav-circle active"></div>
+        <div class="nav-circle"></div>
+        <div class="nav-circle"></div>
+        <div class="nav-circle"></div>
+        <div class="nav-circle"></div>
+        <div class="nav-circle"></div>
+    </div>
+</div><br><br><br>
+<div class="image-slider">
+  <div class="image-slides">
+      <div class="image-slide" style="background-image: url('./pure ghee.jpg');"></div>
+      <div class="image-slide" style="background-image: url('./chips.jpeg');"></div>
+      <div class="image-slide" style="background-image: url('./thin chips.jpeg');"></div>
+      <div class="image-slide" style="background-image: url('./google play.png');"></div>
+      <div class="image-slide" style="background-image: url('./pure ghee.jpg');"></div>
+      <div class="image-slide" style="background-image: url('./groundnut oil.jpg');"></div>
+  </div>
+</div><br><br><br>
+<div class="image-container">
+  <div class="main-image">
+      <div class="overlay-content">
+          <h2>Pure Ghee</h2>
+          <p>Rich in flavor and nutrients. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim risus nec libero auctor, vitae placerat libero rhoncus. In et massa id nisl vehicula efficitur eu ac elit. Donec venenatis vel ligula ac gravida. Donec consectetur ultrices leo, in fermentum eros congue at.</p>
+      </div>
+  </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const slides = document.querySelectorAll('.slide');
+        const circles = document.querySelectorAll('.nav-circle');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            circles.forEach((circle, i) => {
+                circle.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        circles.forEach((circle, index) => {
+            circle.addEventListener('click', () => {
+                currentIndex = index;
+                showSlide(currentIndex);
+            });
+        });
+
+        setInterval(nextSlide, 3000);
+
+        showSlide(currentIndex);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+            const slidesContainer = document.querySelector('.image-slides');
+            const slideItems = document.querySelectorAll('.image-slide');
+            const totalSlides = slideItems.length;
+
+            
+            for (let i = 0; i < totalSlides; i++) {
+                const clone = slideItems[i].cloneNode(true);
+                slidesContainer.appendChild(clone);
+            }
+        });
+    </script>
+</body>
+</html>
